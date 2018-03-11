@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ChangeImg</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="http://malsup.github.com/jquery.cycle.all.js"></script>
+    <style>
+        #button {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #Btn1 {
+            background-color : #003f89;
+        }
+        #myImg {
+            width: 70%;
+            margin: 20px auto;
+        }
+    </style>
+    <script type="text/javascript">
+        function Change1() {
+            Btn1.style.backgroundColor = "#003f89";
+            Btn2.style.backgroundColor = "#007bff";
+        }
+
+        function Change2() {
+            Btn1.style.backgroundColor = "#007bff";
+            Btn2.style.backgroundColor = "#003f89";
+        }
+    </script>
+</head>
+
+<body>
+    <div id="button">
+        <button type="button" class="btn btn-primary" id="Btn1" value="01.jpg" onclick="document.getElementById('myImg').src='img/01.jpg';Change1();">01.jpg</button>
+        <button type="button" class="btn btn-primary" id="Btn2" value="02.jpg" onclick="document.getElementById('myImg').src='img/02.jpg';Change2();">02.jpg</button>
+
+        <div id="Img">
+            <img id="myImg" src="img/01.jpg" alt="01.jpg">
+        </div>
+    </div>
+</body>
+
+</html>

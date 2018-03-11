@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>marquee</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var $marqueeUl = $('#marquee ul'),
+                $marqueeli = $('#marquee li'),
+                $height = $('#marquee').height() * -1,
+                scrollSpeed = 600,
+                speed = 3000 + scrollSpeed,
+                timer;
+
+            $marqueeli.hover(function() {
+                clearTimeout(timer);
+            }, function() {
+                timer = setTimeout(showad, speed);
+            });
+
+            // 跑馬燈
+            function showad() {
+                var $now = $marqueeUl.position().top / $height;
+                $now = ($now + 1) % $marqueeli.length;
+
+                // Ul移動
+                $marqueeUl.animate({
+                    top: $now * $height
+                }, scrollSpeed, function() {
+                    // reset ul.css.top 0
+                    if ($now == $marqueeli.length / 2) {
+                        $marqueeUl.css('top', 0);
+                    }
+                });
+
+                timer = setTimeout(showad, speed);
+            }
+
+            timer = setTimeout(showad, speed);
+
+            $('a').focus(function() {
+                this.blur();
+            });
+        });
+    </script>
+    <style>
+        
+        body{
+            padding: 20px;
+        }
+        
+        #marquee {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 25px;
+        }
+
+        #marquee ul {
+            position: absolute;
+        }
+        
+        #marquee ul, #marquee li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #marquee ul li a {
+            display: block;
+            font-size: 14px;
+            font-family: Microsoft JhengHei;
+            line-height: 1.8;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="marquee">
+        <ul>
+            <li><a href="#1">【No.1】開架彩妝399起</a></li>
+            <li><a href="#2">【No.2】限定品牌買1送1</a></li>
+            <li><a href="#3">【No.3】不限金額最高9折起</a></li>
+            <li><a href="#1">【No.1】開架彩妝399起</a></li>
+            <li><a href="#2">【No.2】限定品牌買1送1</a></li>
+            <li><a href="#3">【No.3】不限金額最高9折起</a></li>
+        </ul>
+    </div>
+</body>
+</html>
